@@ -1,0 +1,371 @@
+body {
+  padding: 1rem 0;
+  font-family: "Rethink Sans";
+
+  &::after {
+    content: "";
+    position: fixed;
+    height: 100%;
+    inset: 0;
+    z-index: -1;
+    opacity: 0.5;
+
+    background-image: url("../img/background.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+    @media all and (max-width: 576px) {
+      opacity: .75;
+    }
+  }
+}
+
+.back-to-top {
+  z-index: 999;
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  margin: 1rem;
+  text-decoration: none;
+  padding: 0.3rem 0.9rem;
+  font-size: 0.9rem;
+  color: white;
+  border-radius: 0.5rem 1rem 1.5rem 2rem;
+  background-color: #dcac27;
+
+  transition: opacity .2s;
+
+  @media all and (max-width:576px) {
+    font-size: .8rem;
+  }
+
+  &::after {
+    $s: 0.5rem;
+    content: "";
+    position: absolute;
+    width: calc($s * 5);
+    height: calc($s * 1.1);
+    top: calc(-0.75 * $s);
+    right: 0.5rem;
+    background-color: #dcac27;
+
+    transform: rotate(20deg);
+
+    transition: transform 8s;
+  }
+  &::before {
+    $s: 1rem;
+    content: "";
+    position: absolute;
+    width: $s;
+    height: $s;
+    top: calc(-0.65 * $s);
+    left: 0.5rem;
+    border-radius: 1rem;
+    border: solid 4px #dcac27;
+    // background-color: #dcac27;
+
+    transform: rotate(-15deg);
+    transition: transform 10s;
+  }
+  &:hover {
+    background-color: #aaa;
+
+    &::after {
+      transform: translateY(-90vw);
+    }
+    &::before {
+      transform: translateY(-90vw);
+    }
+  }
+
+  &:active {
+    &::after {
+      transition: transform 1s;
+      transform: rotate(-45deg) translateX(-1rem);
+    }
+    &::before {
+      transition: transform 1s;
+      transform: translateX(1.5rem);
+    }
+  }
+}
+
+*::selection {
+  background-color: #dcac27;
+  color: white;
+}
+
+h1,
+h2,
+h3 {
+  font-variant-caps: small-caps;
+}
+
+i:not(.no-t) {
+  font-size: 0.8em;
+  color: #888;
+  letter-spacing: 0.4px;
+}
+
+.apresenta {
+  text-align: center;
+  margin-bottom: 2rem;
+
+  h1 {
+    font-family: "Alike Angular";
+    text-transform: uppercase;
+    span {
+      font-size: 0.8em;
+    }
+  }
+}
+
+.conhece {
+  text-align: center;
+  font-variation-settings: "wght" 550;
+
+  // position: relative;
+
+  h1 {
+    margin: 1rem 0;
+    font-size: 1.25rem;
+  }
+
+  .album-cover {
+    width: 450px;
+    max-width: 100%;
+    object-fit: contain;
+    z-index: 1;
+    position: relative;
+  }
+
+  .waves {
+    $h: 100% / 1.85;
+    display: block;
+    height: $h;
+    max-width: 100%;
+    position: absolute;
+    top: calc(40%);
+    z-index: -1;
+    opacity: 0.4;
+
+    &.left {
+      left: 0;
+    }
+    &.right {
+      right: 0;
+      transform: scaleX(-1);
+    }
+
+    @media all and (max-width: 576px) {
+      display: none;
+    }
+  }
+
+  .streaming {
+    margin: 0 auto 2rem;
+  }
+}
+
+.contact {
+  margin-bottom: 2rem;
+  display: flex;
+  flex-flow: column;
+  font-size: 0.8rem;
+
+  font-variation-settings: "wght" 550;
+  a.btn {
+    font-size: inherit;
+    display: inline-block;
+    margin: auto;
+    border: solid 2px #dcac27;
+    background: none;
+    color: #000;
+  }
+  .collapse,
+  .collapsing {
+    margin: auto;
+    .contact-body {
+      text-align: center;
+      padding: 0.5rem;
+      a {
+        display: block;
+      }
+    }
+  }
+}
+
+ol.index {
+  margin: 0 auto 2rem auto;
+  li {
+    margin: 0 0 0.25rem;
+    font-size: 0.8rem;
+    font-family: "Alike angular";
+    color: #aaa;
+    a {
+      margin-left: 0.1rem;
+      font-family: "rethink sans";
+      font-size: 1rem;
+      position: relative;
+      text-decoration: none;
+      color: #000 !important;
+      font-variation-settings: "wght" 450;
+
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: -0.05rem;
+        left: 0;
+        width: 100%;
+        height: 1px;
+        background-color: #eee;
+        z-index: -1;
+      }
+      &::before {
+        content: "";
+        position: absolute;
+        bottom: -0.05rem;
+        left: 0;
+        width: 0;
+        height: 1px;
+        // background-color: transparent;
+        background-color: #dcac27;
+
+        transition:
+          background-color 0.1s,
+          width 0.2s;
+      }
+
+      &:hover {
+        &::before {
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  &.floating {
+    opacity: 0;
+    position: fixed;
+    right: 0;
+    bottom: 60px;
+    margin: 0 1rem 1rem 0;
+    padding: 0.5rem 0.75rem 0.5rem 1.5rem;
+    background: rgba(#f3f4f5, .75);
+    transform-origin: right bottom;
+    transform: scale(0.6);
+
+    transition:
+      transform 0.2s,
+      opacity 0.2s;
+    z-index: 999;
+    border-radius: 0.5rem;
+    
+    &:hover {
+      transform: scale(0.8);
+    }
+
+    @media all and (max-width: 992px) {
+      display: none;
+    } 
+  }
+}
+
+ol.musicas {
+  @media all and (max-width: 576px) {
+    padding-left: 1rem;
+  }
+
+  li {
+    margin: 0 0 2rem;
+    position: relative;
+    color: #aaa;
+
+    font-family: "Alike Angular";
+
+    > *,
+    pre {
+      font-family: "Rethink Sans";
+      color: #000;
+    }
+
+    audio {
+      width: 100%;
+      margin: 1rem 0;
+    }
+
+    pre {
+      white-space: pre-wrap;
+      white-space: -moz-pre-wrap;
+      white-space: -pre-wrap;  
+      white-space: -o-pre-wrap;
+      word-wrap: break-word;
+    }
+
+    .row {
+      margin: 0;
+      width: 100%;
+      [class^="col"] {
+        padding: 0;
+      }
+      .images-col {
+        .images {
+          margin-top: 1rem;
+          img {
+            display: block;
+            width: 576px;
+            max-width: 100%;
+
+            &:not(:last-child) {
+              margin: 0 0 1rem;
+            }
+          }
+        }
+      }
+    }
+
+    .copyright {
+      font-size: 0.8rem;
+      color: #bbb;
+    }
+  }
+}
+
+.streaming {
+  margin: 0 0 2rem;
+  p {
+    font-size: 0.9rem;
+    font-variation-settings: "wght" 500;
+    margin-bottom: 1rem;
+  }
+
+  .links {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+
+    img {
+      $icon_size: 30px;
+      cursor: pointer;
+      height: $icon_size;
+      width: $icon_size;
+      object-fit: contain;
+
+      transition: transform 0.2s;
+
+      &:hover {
+        transform: scale(1.2);
+      }
+    }
+  }
+}
+
+
+@media all and (max-width: 576px) {
+  .container {
+    padding-left: .5rem !important;
+    padding-right: .5rem !important;
+  }
+}
